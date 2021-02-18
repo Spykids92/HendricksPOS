@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export default {
-  getAll: async () => {
-    let res = await axios.get(`/api/menu`);
+  GetMenu: async () => {
+    let res = await axios.get(`/api/menus`);
     return res.data || [];
   }
 }
