@@ -1,7 +1,7 @@
 import React from "react";
 import {Button,Table,Modal} from 'react-bootstrap';
 import MenuService from '../services/MenuService';
-// import Menu from './Menu';
+import Menu from './Menu';
 
 class MenuList extends React.Component
 {
@@ -50,13 +50,10 @@ class MenuList extends React.Component
       this.setState({
         selectedMenu:{
           _id:'',
-          flavour:{
-            flavour:'',
-            description:''
-          },
-          size:'',
-          crust:'',
-          price:''
+          name:'',
+          price:{
+            $numberDecimal:''
+          }
         },
         isEdit:false,show:true});
     }
@@ -103,6 +100,17 @@ class MenuList extends React.Component
             }
           </tbody>
         </Table>
+        <Modal id='MenuModal' show={this.state.show} onHide={this.handleClose.bind(this)}>
+          <Modal.Header closeButton>
+            <Modal.Title>{(this.state.isEdit)? 'Update Menu' : 'New Menu'}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Menu selectedMenu={this.state.selectedMenu}
+                  isEdit={this.state.isEdit}
+                  onHide={this.handleClose.bind(this)}>
+            </Menu>
+          </Modal.Body>
+        </Modal>
         </div>
       )}
 }
