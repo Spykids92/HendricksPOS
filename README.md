@@ -12,24 +12,24 @@ For the database connection, I've integrated with MongoDbAtlas so that reviewer 
 
 3) run "npm run dev" to start the project backend + frontend
 
-*note*
-In case you're encounter such error message :
+*note:*
+In case you encounter such error message :
     "Cannot read property 'prototype' of undefined when extending classes" 
 
 Do the following steps :
 MacOS:
-$ lsof -i tcp:3000
-$ kill -9 PID
+1) $ lsof -i tcp:3000
+2) $ kill -9 PID
 
-$ lsof -i tcp:5000
-$ kill -9 PID
+3) $ lsof -i tcp:5000
+4) $ kill -9 PID
 
 Windows:
-netstat -ano | findstr :3000
-tskill typeyourPIDhere 
+1) netstat -ano | findstr :3000
+2) tskill typeyourPIDhere 
 
-netstat -ano | findstr :5000
-tskill typeyourPIDhere 
+3) netstat -ano | findstr :5000
+4) tskill typeyourPIDhere 
 
 ### Once localhost / app is started :
 # Menu API
