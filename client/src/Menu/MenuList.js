@@ -5,10 +5,6 @@ import Menu from './Menu';
 
 class MenuList extends React.Component
 {
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
     constructor(props){
       super(props);
       this.state ={

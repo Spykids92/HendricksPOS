@@ -7,20 +7,22 @@ import { Container } from 'react-bootstrap';
 import App from './App';
 import NavbarPOS from './Navbar/Navbar.js'
 import MenuList from './Menu/MenuList';
+import OrderLists from './Order/OrderLists';
 
 const routing = (
   <Router>
     <div>
       <Container>
-      <div>
-        <NavbarPOS></NavbarPOS>
-      </div>
+        <div>
+          <NavbarPOS></NavbarPOS>
+        </div>
 
-      <hr/>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/menu" component={MenuList} />        
-      </Switch>
+        <hr />
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/menu" component={MenuList} />
+          <Route path="/order" component={OrderLists} />
+        </Switch>
       </Container>
     </div>
   </Router>
