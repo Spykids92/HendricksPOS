@@ -27,6 +27,27 @@ class OrderLists extends React.Component {
                     }
                 }],
             }],
+
+            selectedOrder: {
+                _id: '',
+                totalPrice: {
+                    $numberDecimal: ''
+                },
+                items: [{
+                    item: {
+                        menu_id: '',
+                        name: '',
+                        price: {
+                            $numberDecimal: ''
+                        }
+                    },
+                    _id: '',
+                    qty: '',
+                    subTotalPrice: {
+                        $numberDecimal: ''
+                    }
+                }],
+            },
             show: false,
             isEdit: false
         }
@@ -56,8 +77,8 @@ class OrderLists extends React.Component {
         this.getOrders();
     }
 
-    editOrder = async (m) => {
-        // this.setState({ selectedMenu: m, isEdit: true, show: true })
+    editOrder = async (order) => {
+        this.setState({ selectedOrder: order, isEdit: true, show: true })
     }
 
     getOrders = async () => {
@@ -76,9 +97,10 @@ class OrderLists extends React.Component {
                     {
                         this.state.orders.map((order, index) => {
                             return (<>
-                                <div onClick={() => this.editOrder(order)} >
+                                <div>
                                     <h4>Order Id : {order._id}</h4>
                                     <h3>Total :{order.totalPrice.$numberDecimal}</h3>
+                                    <Button style={{ marginRight: "5px" }} size='sm' onClick={() => this.editOrder(order)}>Edit</Button>
                                     <Button size='sm' onClick={() => this.deleteOrder(order._id)}>Delete</Button>
                                     <div>{order.items.map((i, index) => {
                                         return (<>
@@ -100,6 +122,7 @@ class OrderLists extends React.Component {
                         </Modal.Header>
                         <Modal.Body>
                             <Order
+                                selectedOrder={this.state.selectedOrder}
                                 isEdit={this.state.isEdit}
                                 onHide={this.handleClose.bind(this)}>
                             </Order>
